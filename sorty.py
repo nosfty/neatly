@@ -1,25 +1,18 @@
-
-
-
-
-import pystray, PIL.Image, PIL.ImageTk
-
 import json
 import tkinter as tk
 from tkinter import filedialog
+
+import PIL.Image
+import PIL.ImageTk
+import pystray
 from notifypy import Notify
-
-import os
-import shutil
-import mimetypes
-
-
 
 image = PIL.Image.open("ico.png")
 
 enable_notifications = True
 
 destination = ""
+
 
 def create_settings():
     root = tk.Tk()
@@ -41,10 +34,12 @@ def create_settings():
         json.dump(settings, settings_file)
 
 
+import os
+import shutil
+import mimetypes
 
 
 def sort_files(directory):
-
     folders = {
         "Images": os.path.join(directory, "Images"),
         "Audio": os.path.join(directory, "Audio"),
@@ -55,7 +50,6 @@ def sort_files(directory):
         "Other": os.path.join(directory, "Other")
     }
 
-
     for folder in folders.values():
         os.makedirs(folder, exist_ok=True)
 
@@ -64,10 +58,8 @@ def sort_files(directory):
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
 
-
         if os.path.isdir(file_path):
             continue
-
 
         if filename.lower().endswith('.exe'):
             target_folder = folders["Other"]
@@ -93,7 +85,6 @@ def sort_files(directory):
                 else:
                     target_folder = folders["Other"]
 
-
                 shutil.move(file_path, os.path.join(target_folder, filename))
                 print(f"Перемещен: {filename} в {target_folder}")
                 moved_files_count += 1
@@ -104,7 +95,6 @@ def sort_files(directory):
 
 
 def sort(icon, item):
-
     if enable_notifications:
         notification = Notify()
         notification.application_name = "Sorty!"
@@ -120,8 +110,7 @@ def sort(icon, item):
     print("sorted!")
 
 
-def exit_action(icon:pystray.Icon):
-
+def exit_action(icon: pystray.Icon):
     icon.stop()
     exit(0)
 
@@ -132,19 +121,18 @@ def change_settings():
     with open("settings.sorty", "r") as settings_file:
         settings = json.load(settings_file)
 
-
         enable_notifications = settings.get("notificationsenabled", enable_notifications)
         destination = settings.get("download_folder", destination)
 
     print(destination)
     print(enable_notifications)
 
-icon = pystray.Icon("Sorty", image, menu = pystray.Menu(
+
+icon = pystray.Icon("Sorty", image, menu=pystray.Menu(
     pystray.MenuItem("Sort!", sort),
     pystray.MenuItem("Сhange Directory", change_settings),
-    pystray.MenuItem("Exit", lambda : exit_action(icon))
+    pystray.MenuItem("Exit", lambda: exit_action(icon))
 ))
-
 
 if os.path.exists("settings.sorty"):
     with open("settings.sorty", "r") as settings_file:
@@ -161,4 +149,3 @@ else:
     print(enable_notifications)
 
 icon.run()
-
