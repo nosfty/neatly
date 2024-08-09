@@ -1,4 +1,5 @@
-# Application "Sorty"
+![Rectangle 5](https://github.com/user-attachments/assets/bbf3fd4c-d2ee-4395-99c7-02e0abab4a92)
+
 
 ## About the Application
 
