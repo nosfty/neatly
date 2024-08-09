@@ -124,7 +124,7 @@ def change_dir(icon: pystray.Icon)  -> None:
         NOTIFY_ENABLE = settings.get("notificationsenabled", NOTIFY_ENABLE)
         DIR_DESTINATION = settings.get("download_folder", DIR_DESTINATION)
 
-def autoswitcher():
+def autoswitcher()  -> int:
     global AUTO_SORT
 
     if AUTO_SORT:
