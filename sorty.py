@@ -9,6 +9,9 @@ import tkinter as tk
 from tkinter import filedialog
 from notifypy import Notify
 
+import os
+import shutil
+import mimetypes
 
 
 
@@ -38,9 +41,7 @@ def create_settings():
         json.dump(settings, settings_file)
 
 
-import os
-import shutil
-import mimetypes
+
 
 def sort_files(directory):
 
