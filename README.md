@@ -51,10 +51,6 @@ To exit the application:
 1. Right-click on the "Sorty" icon in the tray.
 2. Select "Exit".
 
-## Note
-
-Currently, automatic file sorting is not available, and all actions must be performed manually.
-
 ## Conclusion
 
 The "Sorty" application is a convenient tool for keeping your files organized. Install it today and enjoy a tidy downloads folder!
