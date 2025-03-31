@@ -1,4 +1,4 @@
-![Frame 1](https://github.com/user-attachments/assets/f67cdfd2-6399-4d4c-8838-eaf6dd02732e)
+
 
 [Buy me a coffee](https://boosty.to/unsfty/donate)
 
